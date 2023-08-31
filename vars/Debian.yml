@@ -1,0 +1,9 @@
+---
+# Package to be installed for log rotation
+__logrotate_package: logrotate
+
+# Service for log rotation
+__logrotate_service: logrotate
+
+# Directory to hold log rotation configuration
+__logrotate_conf_dir: /etc/logrotate.d

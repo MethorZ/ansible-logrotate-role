@@ -1,0 +1,9 @@
+---
+#
+# Handler to restart the logrotate service
+#
+- name: restart logrotate
+  service:
+    name: "{{ logrotate_service }}"
+    state: restarted
+  when: logrotate_enabled

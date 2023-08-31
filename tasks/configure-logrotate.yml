@@ -1,0 +1,14 @@
+---
+##
+# Log rotation set up
+##
+- name: TEMPLATE | Deploy the configured log rotations
+  template:
+    src: logrotate.j2
+    dest: "{{ logrotate_conf_dir }}/{{ item.name }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ logrotate_configurations | default([]) }}"
+  notify:
+    - restart logrotate

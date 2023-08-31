@@ -1,0 +1,41 @@
+{% for log_file in logrotate_config.files %}
+{{ log_file }}
+{% endfor %}
+{
+{% if logrotate_config.frequency is defined %}
+    logrotate_config.frequency
+{% endif %}
+{% if logrotate_config.rotation is defined %}
+    rotate logrotate_config.rotation
+{% endif %}
+{% if logrotate_config.compress is defined and logrotate_config.compress %}
+    compress
+{% else %}
+    nocomporess
+{% endif %}
+{% if logrotate_config.create_mode is defined %}
+    logrotate_config.create_mode
+{% endif %}
+{% if logrotate_config.create_user is defined %}
+    logrotate_config.create_user
+{% endif %}
+{% if logrotate_config.create_group is defined %}
+    logrotate_config.create_group
+{% endif %}
+{% if logrotate_config.add_extension is defined %}
+    addextension logrotate_config.add_extension
+{% endif %}
+{% if logrotate_config.dateext is defined %}
+    dateext logrotate_config.dateext
+{% endif %}
+{% if logrotate_config.rotate_if_empty is defined and logrotate_config.rotate_if_empty %}
+    ifempty
+{% else %}
+    notifempty
+{% endif %}
+{% if logrotate_config.ignore_missing_log_error is defined and logrotate_config.ignore_missing_log_error %}
+    missingok
+{% else %}
+    nomissingok
+{% endif %}
+}

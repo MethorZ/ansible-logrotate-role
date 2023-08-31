@@ -1,0 +1,21 @@
+---
+#
+# Default OS specific variable definitions / defaults
+#
+- name: INCLUDE_VARS | OS specific vars
+  include_vars: "{{ ansible_facts['os_family'] }}.yml"
+
+- name: FACTS - Define required logrotate package
+  set_fact:
+    logrotate_package: "{{ __logrotate_package }}"
+  when: logrotate_package is not defined
+
+- name: FACTS - Define logrotate service
+  set_fact:
+    logrotate_service: "{{ __logrotate_service }}"
+  when: logrotate_service is not defined
+
+- name: FACTS - Define logrotate conf directory
+  set_fact:
+    logrotate_conf_dir: "{{ __logrotate_conf_dir }}"
+  when: logrotate_conf_dir is not defined

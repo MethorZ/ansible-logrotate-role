@@ -1,0 +1,17 @@
+galaxy_info:
+  author: MethorZ
+  description: Ansible logrotation role for Debian
+  company: MethorZ
+  min_ansible_version: 2.5
+  platforms:
+    - name: Debian
+      versions:
+        - all
+
+  galaxy_tags:
+    - development
+    - debian
+    - log
+    - rotation
+
+dependencies: []

@@ -1,0 +1,19 @@
+---
+- block:
+    #
+    # Import variable definitions and defaults
+    #
+    - name: IMPORT_TASKS | Setup Variable definitions / defaults
+      import_tasks: setup-variables.yml
+
+    #
+    # Set up the OS based on family
+    #
+    - name: IMPORT_TASKS | Setup Logrotate for OS
+      import_tasks: "setup-Debian.yml"
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: IMPORT_TASKS | Configure PHP FPM
+      import_tasks: configure-logrotate.yml
+
+  when: logrotate_enabled
