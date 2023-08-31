@@ -1,6 +1,7 @@
 galaxy_info:
+  role_name: methorz.logrotate
   author: MethorZ
-  description: Ansible logrotation role for Debian
+  description: Ansible log rotation role for Debian
   company: MethorZ
   min_ansible_version: 2.5
   platforms:

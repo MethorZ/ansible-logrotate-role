@@ -1,26 +1,13 @@
 ---
 #
-# Setup required repositories
-#
-- name: APT | Prepare Sury repository
-  import_tasks: setup-repositories.yml
-  when: ansible_facts['os_family'] == 'Debian' and php_fpm_sury_repository_enabled
-
-#
 # Setup all required packages
 #
 - name: APT | Updating the apt cache
   apt:
     update_cache: yes
 
-- name: APT | Setting up php packages (non cli only mode)
+- name: APT | Setting up logrotate packages
   apt:
     name: "{{ logrotate_package }}"
     state: present
-  when: logrotate_enabled
-
-- name: APT | Setting up php packages (cli only mode)
-  apt:
-    name: "{{ php_fpm_cli_only_packages }}"
-    state: "{{ php_fpm_packages_mode }}"
   when: logrotate_enabled

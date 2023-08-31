@@ -11,10 +11,22 @@ None
 Role Variables
 --------------
 ```YAML
-# Install or update latest packages
-system_package_mode: latest # present
+# Enable log rotation role
+logrotate_enabled: false
 
-
+# Configure log rotations
+logrotate_configurations: []
+#  # Example setup
+#  - name: my-logs
+#    files:
+#      - /var/log/my-log-file.log
+#      - /var/log/news/*
+#    frequency: daily # yearly | monthly | weekly | daily | hourly (requires crontab modification)
+#    rotation: 5
+#    compress: true
+#    create_mode: 644 root root
+#    rotate_if_empty: true
+#    ignore_missing_log_error: false
 ```
 
 Dependencies

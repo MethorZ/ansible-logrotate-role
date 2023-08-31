@@ -5,10 +5,12 @@
 - name: TEMPLATE | Deploy the configured log rotations
   template:
     src: logrotate.j2
-    dest: "{{ logrotate_conf_dir }}/{{ item.name }}"
+    dest: "{{ logrotate_conf_dir }}/{{ logrotate_config.name }}"
     owner: root
     group: root
     mode: '0644'
   with_items: "{{ logrotate_configurations | default([]) }}"
+  loop_control:
+    loop_var: logrotate_config
   notify:
     - restart logrotate

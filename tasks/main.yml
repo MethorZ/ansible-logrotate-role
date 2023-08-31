@@ -13,7 +13,7 @@
       import_tasks: "setup-Debian.yml"
       when: ansible_facts['os_family'] == 'Debian'
 
-    - name: IMPORT_TASKS | Configure PHP FPM
+    - name: IMPORT_TASKS | Configure Logrotate
       import_tasks: configure-logrotate.yml
 
   when: logrotate_enabled

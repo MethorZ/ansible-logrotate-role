@@ -1,16 +1,18 @@
 ---
+##
+# Basic default configuration for log rotation
+##
 logrotate_enabled: false
 
-logrotate_configurations:
-  - name: nginx
-    files:
-      - /var/log/my-log-file.log
-      - /var/log/news/*
-    frequency: daily # yearly | monthly | weekly | daily | hourly (requires crontab modification)
-    rotation: 5
-    compress: true
-    create_mode: 644
-    create_user: root
-    create_group: root
-    rotate_if_empty: true
-    ignore_missing_log_error: false
+logrotate_configurations: []
+#  # Example setup
+#  - name: my-logs
+#    files:
+#      - /var/log/my-log-file.log
+#      - /var/log/news/*
+#    frequency: daily # yearly | monthly | weekly | daily | hourly (requires crontab modification)
+#    rotation: 5
+#    compress: true
+#    create_mode: 644 root root
+#    rotate_if_empty: true
+#    ignore_missing_log_error: false
