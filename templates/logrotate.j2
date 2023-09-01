@@ -1,5 +1,5 @@
 {% for log_file in logrotate_config.files %}
-{{ log_file }}{{ "," if not loop.last else "" }}
+{{ log_file }}
 {% endfor %}
 {
 {% if logrotate_config.frequency is defined %}
@@ -11,7 +11,7 @@
 {% if logrotate_config.compress is defined and logrotate_config.compress %}
     compress
 {% else %}
-    nocomporess
+    nocompress
 {% endif %}
 {% if logrotate_config.create_mode is defined %}
     create {{ logrotate_config.create_mode }}
@@ -31,5 +31,15 @@
     missingok
 {% else %}
     nomissingok
+{% endif %}
+{% if logrotate_config.shared_scripts is defined and logrotate_config.shared_scripts %}
+    sharedscripts
+{% endif %}
+{% if logrotate_config.post_rotate_scripts is defined %}
+    postrotate
+{% for postrotate_script in logrotate_config.post_rotate_scripts %}
+        {{ postrotate_script }}
+{% endfor %}
+    endscript
 {% endif %}
 }

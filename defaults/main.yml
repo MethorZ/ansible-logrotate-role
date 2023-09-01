@@ -16,3 +16,5 @@ logrotate_configurations: []
 #    create_mode: 644 root root
 #    rotate_if_empty: true
 #    ignore_missing_log_error: false
+#    shared_scripts: true
+#    post_rotate_scripts: []
