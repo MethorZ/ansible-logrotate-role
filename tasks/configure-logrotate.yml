@@ -2,6 +2,10 @@
 ##
 # Log rotation set up
 ##
+- debug:
+    msg: "{{ item }}"
+  loop: "{{ logrotate_configurations }}"
+
 - name: TEMPLATE | Deploy the configured log rotations
   template:
     src: logrotate.j2
